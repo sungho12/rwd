@@ -1,0 +1,288 @@
+@charset "utf-8";
+
+/* 초기화 */
+body,
+h1,
+h2,
+ul,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(57, 55, 55);
+}
+ul li {
+    list-style: none;
+}
+address {
+    font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+small {
+    font-size: 1em;
+}
+hr {
+    display: none;
+}
+
+.hidden {
+    position: absolute;
+    top: -9999px;
+}
+.gnbView {
+    display: none;
+}
+
+/* 헤더 */
+#header {
+    width: 100%;
+    height: 100px;
+    background: lightskyblue;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: center;
+}
+#header h1 {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+}
+#header h1 a {
+}
+
+/* membership */
+#membership {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+}
+#membership ul {
+    display: flex;
+}
+#membership ul li {
+    margin-left: 20px;
+}
+#membership ul li a {
+    font-size: 14px;
+}
+
+/* gnb */
+#gnb {
+    /* align-items 사용하면 서브메뉴 있을 시 위치 안맞음 */
+    margin-top: 35px;
+}
+#gnb ul {
+    display: flex;
+}
+#gnb ul li {
+    margin: 0 20px;
+}
+#gnb ul li a {
+    font-size: 14px;
+}
+
+/* event */
+#event {
+    width: 100%;
+    height: 500px;
+    background: gray;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#event h2 {
+    color: #fff;
+}
+#event p {
+    color: #fff;
+
+    margin: 20px 0 80px;
+}
+#event a {
+    width: 200px;
+    /* line-height 적용시 높이 생략 가능 */
+    /* height: 30px; */
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    border: 1px solid #fff;
+    color: #fff;
+
+    text-align: center;
+    line-height: 30px;
+}
+#event a:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* main */
+main {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+
+    flex-wrap: wrap;
+}
+main > section {
+    width: 25%;
+    height: 300px;
+}
+#content1 {
+    background: lightblue;
+}
+#content2 {
+    background: lightcoral;
+}
+#content3 {
+    background: lightcyan;
+}
+#content4 {
+    background: lightgoldenrodyellow;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    /* 크기가 줄어들때 줄바꿈으로 인해 짤림현상 방지하기 위해 padding */
+    padding: 50px 0;
+    background: #414141;
+    color: #fff;
+}
+
+/* meida */
+/* 1200이상 */
+@media all and (min-width: 1201px) {
+    main > section {
+        width: 25%;
+    }
+    #event h2 {
+        font-size: 100px;
+    }
+    #event p {
+        font-size: 20px;
+    }
+}
+/* 1200미만 */
+@media all and (max-width: 1200px) {
+    main {
+        width: 100%;
+    }
+    main > section {
+        width: 25%;
+    }
+    #event h2 {
+        font-size: 10vw;
+    }
+    #event p {
+        font-size: 2vw;
+    }
+}
+/* 800이하  */
+@media all and (max-width: 800px) {
+    .gnbView:hover::before {
+        transform: rotate(45deg);
+        top: 19px;
+        transition: 0.3s;
+    }
+    .gnbView:hover::after {
+        transform: rotate(-45deg);
+        top: 20px;
+        transition: 0.3s;
+    }
+
+    #header h1 {
+        position: static;
+        margin-top: 25px;
+    }
+    .gnbView {
+        display: block;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid black;
+    }
+    .gnbView::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 5px;
+        /* display: block; */
+        width: 30px;
+        height: 2px;
+        background: black;
+    }
+    .gnbView::after {
+        content: '';
+        position: absolute;
+        top: 24px;
+        left: 5px;
+        /* display: block; */
+        width: 30px;
+        height: 2px;
+        background: black;
+    }
+
+    #gnb {
+        position: fixed;
+        top: 0;
+        left: -200px;
+        margin: 0;
+        width: 200px;
+        height: 100vh;
+        background: lightgreen;
+
+        transition: 0.5s;
+    }
+    #gnb ul {
+        display: block;
+    }
+    #gnb ul li {
+        line-height: 50px;
+        text-align: center;
+        margin: 100px 0;
+    }
+    #gnb ul li a {
+        color: #fff;
+        display: block;
+        width: 150px;
+        height: 50px;
+        font-size: 30px;
+    }
+
+    main > section {
+        width: 50%;
+    }
+    #event h2 {
+        font-size: 32px;
+    }
+    #event p {
+        font-size: 16px;
+    }
+}
+/* 600이하 */
+@media all and (max-width: 600px) {
+    main > section {
+        width: 100%;
+    }
+    #membership ul {
+        /* display: block; 을 하면 absolute해제 */
+        display: block;
+        text-align: right;
+    }
+}
